@@ -36,8 +36,6 @@ def main():
     cursor.execute('DROP TABLE IF EXISTS pca_data;')
     cursor.execute('CREATE TABLE pca_data(feature_1 FLOAT, feature_2 FLOAT, feature_3 FLOAT, feature_4 FLOAT);')
     connection.commit()
-    # except:
-        # print('Could not create table, maybe it already exists, trying to continue...')
 
     with open('./data/example_data1.csv', 'r') as file:
         next(file)
