@@ -5,22 +5,22 @@ import psycopg2
 import psycopg2.extensions
 import argparse
 import subprocess
+import docker
 
 def main():
     parser = argparse.ArgumentParser(sys.argv[0])
     parser.add_argument('-cf', '--credential_file', help='File with database credentials', default='credentials.json')
     args = parser.parse_args()
 
-    subprocess.Popen('docker stop postgres_server 2> /dev/null', shell=True).wait()
-    sleep(0.5)
-    subprocess.Popen('docker rm postgres_server 2> /dev/null', shell=True).wait()
-    sleep(0.5)
-    subprocess.Popen('docker run -p 5432:5432 -e POSTGRES_PASSWORD=teste123!@#321#@! --name postgres_server -d postgres 2> /dev/null', shell=True).wait()
-    sleep(0.5)
-    subprocess.Popen('docker start postgres_server 2> /dev/null', shell=True).wait()
-    sleep(0.5)
+    docker_client = docker.from_env()
+    postgres_server = None
+    try:
+        postgres_server = docker_client.containers.get('postgres_server')
+        print(postgres_server.attrs['Name'])
+    except:
+        postgres_server = docker_client.run('postgres', name='postgres_server', ports={5432: 5432}, environment={"POSTGRES_PASSWORD": "teste123!@#321#@!"})
+    postgres_server.start()
     
-
     credential_file = json.load(open(args.credential_file, 'r'))
     connection = psycopg2.connect(f'dbname=postgres host={credential_file["host"]} port={credential_file["port"]} user={credential_file["user"]} password={credential_file["password"]}')
     connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
