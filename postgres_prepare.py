@@ -20,7 +20,7 @@ def main():
     except:
         postgres_server = docker_client.run('postgres', name='postgres_server', ports={5432: 5432}, environment={"POSTGRES_PASSWORD": "teste123!@#321#@!"})
     postgres_server.start()
-    
+
     credential_file = json.load(open(args.credential_file, 'r'))
     connection = psycopg2.connect(f'dbname=postgres host={credential_file["host"]} port={credential_file["port"]} user={credential_file["user"]} password={credential_file["password"]}')
     connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
