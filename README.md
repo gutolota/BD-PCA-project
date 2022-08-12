@@ -13,10 +13,10 @@ Este projeto foi realizado com o intuito de produzir um artigo científico para 
 ## Execução:
 1 - Dentro da pasta raiz, execute:
 
-    `.../BD-PCA-project/$ pipenv shell`
+    .../BD-PCA-project/$ pipenv shell
 
 2 - Em seguida, iniciaremos o ambiente postgresql docker executando o seguinte comando:
 
-    `.../BD-PCA-project/$ python3 postgres_prepare.py`
+    .../BD-PCA-project/$ python3 postgres_prepare.py
 
 3 - Agora será necessário abrir a ferramenta para acessar o jupyter notebook: pca_analysis.ipynb
