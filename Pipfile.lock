@@ -30,7 +30,7 @@
                 "sha256:fe86415d55e84719d75f8b69414f6438ac3547d2078ab91b67e779ef69378412"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==2022.6.15"
+            "version": ">=2022.12.07"
         },
         "charset-normalizer": {
             "hashes": [
@@ -101,7 +101,7 @@
                 "sha256:715e22bb6cc7db3718fddfac1f69f1c7e899ca00e42bdfd4bf3705452b9fd84a"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==4.11.1"
+            "version": ">=4.11.2"
         },
         "kiwisolver": {
             "hashes": [
@@ -892,7 +892,7 @@
                 "sha256:3bcaf6e27ad3b0f643ba0a48c5ab9eca930c3eb51df0e068f4826ab880c394ea"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==64.0.3"
+            "version": "==65.5.1"
         },
         "six": {
             "hashes": [
